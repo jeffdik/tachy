@@ -1,0 +1,54 @@
+// VSUserControlHost.idl : IDL source for VSUserControlHost
+//
+
+// This file will be processed by the MIDL tool to
+// produce the type library (VSUserControlHost.tlb) and marshalling code.
+
+#include "olectl.h"
+import "oaidl.idl";
+import "ocidl.idl";
+
+[
+	object,
+	uuid(5BC4D5A3-F1C8-44F5-8C62-E0BF5CBE92EB),
+	dual,
+	nonextensible,
+	helpstring("IVSUserControlHostCtl Interface"),
+	pointer_default(unique)
+]
+interface IVSUserControlHostCtl : IDispatch{
+
+	[id(1), helpstring("Host a .NET User Control within a Tool Window.")] 
+	HRESULT HostUserControl(BSTR Assembly, BSTR Class, [out,retval] IDispatch** ppControlObject);
+
+	[id(2), helpstring("Host a .NET User Control within a Tool Window, and apply a picture to the tool window tab.")] 
+	HRESULT HostUserControl2(IUnknown *pToolWindow, BSTR Assembly, BSTR Class, BSTR SatelliteDLL, int ResourceID, [out,retval] IUnknown** ppControlObject);
+};
+
+[
+	uuid(280D96EA-474C-486E-88BE-5EB39FC4ACCB),
+	version(1.0),
+	helpstring("VSUserControlHost 1.0 Type Library")
+]
+library VSUserControlHostLib
+{
+	importlib("stdole2.tlb");
+
+	[
+		uuid(458AB8A2-A1EA-4D7B-8EBE-DEE5D3D9442C)
+	]
+	interface IWin32Window : IUnknown
+	{
+		HRESULT get_Handle([out, retval] long *pHWnd);
+	};
+
+
+	[
+		uuid(FE224107-D60D-4775-913F-4DED40FD84F5),
+		helpstring("VSUserControlHostCtl Class")
+	]
+	coclass VSUserControlHostCtl
+	{
+		[default] interface IVSUserControlHostCtl;
+	};
+};

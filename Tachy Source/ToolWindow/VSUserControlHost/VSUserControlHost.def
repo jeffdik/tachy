@@ -1,0 +1,9 @@
+; VSUserControlHost.def : Declares the module parameters.
+
+LIBRARY      "VSUserControlHost.DLL"
+
+EXPORTS
+	DllCanUnloadNow		PRIVATE
+	DllGetClassObject	PRIVATE
+	DllRegisterServer	PRIVATE
+	DllUnregisterServer	PRIVATE

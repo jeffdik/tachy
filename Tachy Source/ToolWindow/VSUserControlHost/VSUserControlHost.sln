@@ -1,0 +1,26 @@
+Microsoft Visual Studio Solution File, Format Version 7.00
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "VSUserControlHost", "VSUserControlHost.vcproj", "{F127E743-7C19-4139-8A36-7222B5F5AF79}"
+EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "VSUserControlHostPS", "VSUserControlHostPS.vcproj", "{DCB128BD-B2F6-4AE8-8006-0A86EB711321}"
+EndProject
+Global
+	GlobalSection(SolutionConfiguration) = preSolution
+		ConfigName.0 = Debug
+		ConfigName.1 = Release
+	EndGlobalSection
+	GlobalSection(ProjectDependencies) = postSolution
+		{DCB128BD-B2F6-4AE8-8006-0A86EB711321}.0 = {F127E743-7C19-4139-8A36-7222B5F5AF79}
+	EndGlobalSection
+	GlobalSection(ProjectConfiguration) = postSolution
+		{F127E743-7C19-4139-8A36-7222B5F5AF79}.Debug.ActiveCfg = Debug|Win32
+		{F127E743-7C19-4139-8A36-7222B5F5AF79}.Debug.Build.0 = Debug|Win32
+		{F127E743-7C19-4139-8A36-7222B5F5AF79}.Release.ActiveCfg = Release|Win32
+		{F127E743-7C19-4139-8A36-7222B5F5AF79}.Release.Build.0 = Release|Win32
+		{DCB128BD-B2F6-4AE8-8006-0A86EB711321}.Debug.ActiveCfg = Debug|Win32
+		{DCB128BD-B2F6-4AE8-8006-0A86EB711321}.Release.ActiveCfg = Release|Win32
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+	EndGlobalSection
+	GlobalSection(ExtensibilityAddIns) = postSolution
+	EndGlobalSection
+EndGlobal

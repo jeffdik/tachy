@@ -1,0 +1,59 @@
+Microsoft Visual Studio Solution File, Format Version 8.00
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TachyExtension", "TachyExtension\TachyExtension.csproj", "{765EC20F-9F29-43FD-A50F-E140E690A151}"
+	ProjectSection(ProjectDependencies) = postProject
+	EndProjectSection
+EndProject
+Project("{54435603-DBB4-11D2-8724-00A0C9A8B90C}") = "TachySetup", "TachyExtensionSetup\TachySetup.vdproj", "{95CB88BF-38EB-42EA-9FB1-FEBF790239AC}"
+	ProjectSection(ProjectDependencies) = postProject
+	EndProjectSection
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Tachy", "Tachy.csproj", "{E6BF07E1-4CFE-4F2B-8CEE-9D3846D11848}"
+	ProjectSection(ProjectDependencies) = postProject
+	EndProjectSection
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TachyRepl", "TachyRepl\TachyRepl.csproj", "{D9AA7703-0811-47F1-84DC-5358FCE3F385}"
+	ProjectSection(ProjectDependencies) = postProject
+	EndProjectSection
+EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "VSUserControlHost", "ToolWindow\VSUserControlHost\VSUserControlHost.vcproj", "{F127E743-7C19-4139-8A36-7222B5F5AF79}"
+	ProjectSection(ProjectDependencies) = postProject
+	EndProjectSection
+EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "TachyAddInImages", "TachyExtension\TachyAddInImages\TachyAddInImages.vcproj", "{DF90528B-0BD5-4D4D-B2B9-12B37C57AB88}"
+	ProjectSection(ProjectDependencies) = postProject
+	EndProjectSection
+EndProject
+Global
+	GlobalSection(SolutionConfiguration) = preSolution
+		Debug = Debug
+		Release = Release
+	EndGlobalSection
+	GlobalSection(ProjectConfiguration) = postSolution
+		{765EC20F-9F29-43FD-A50F-E140E690A151}.Debug.ActiveCfg = Debug|.NET
+		{765EC20F-9F29-43FD-A50F-E140E690A151}.Debug.Build.0 = Debug|.NET
+		{765EC20F-9F29-43FD-A50F-E140E690A151}.Release.ActiveCfg = Release|.NET
+		{765EC20F-9F29-43FD-A50F-E140E690A151}.Release.Build.0 = Release|.NET
+		{95CB88BF-38EB-42EA-9FB1-FEBF790239AC}.Debug.ActiveCfg = Debug
+		{95CB88BF-38EB-42EA-9FB1-FEBF790239AC}.Release.ActiveCfg = Release
+		{E6BF07E1-4CFE-4F2B-8CEE-9D3846D11848}.Debug.ActiveCfg = Debug|.NET
+		{E6BF07E1-4CFE-4F2B-8CEE-9D3846D11848}.Debug.Build.0 = Debug|.NET
+		{E6BF07E1-4CFE-4F2B-8CEE-9D3846D11848}.Release.ActiveCfg = Release|.NET
+		{E6BF07E1-4CFE-4F2B-8CEE-9D3846D11848}.Release.Build.0 = Release|.NET
+		{D9AA7703-0811-47F1-84DC-5358FCE3F385}.Debug.ActiveCfg = Debug|.NET
+		{D9AA7703-0811-47F1-84DC-5358FCE3F385}.Debug.Build.0 = Debug|.NET
+		{D9AA7703-0811-47F1-84DC-5358FCE3F385}.Release.ActiveCfg = Release|.NET
+		{D9AA7703-0811-47F1-84DC-5358FCE3F385}.Release.Build.0 = Release|.NET
+		{F127E743-7C19-4139-8A36-7222B5F5AF79}.Debug.ActiveCfg = Debug|Win32
+		{F127E743-7C19-4139-8A36-7222B5F5AF79}.Debug.Build.0 = Debug|Win32
+		{F127E743-7C19-4139-8A36-7222B5F5AF79}.Release.ActiveCfg = Release|Win32
+		{F127E743-7C19-4139-8A36-7222B5F5AF79}.Release.Build.0 = Release|Win32
+		{DF90528B-0BD5-4D4D-B2B9-12B37C57AB88}.Debug.ActiveCfg = Debug|Win32
+		{DF90528B-0BD5-4D4D-B2B9-12B37C57AB88}.Debug.Build.0 = Debug|Win32
+		{DF90528B-0BD5-4D4D-B2B9-12B37C57AB88}.Release.ActiveCfg = Release|Win32
+		{DF90528B-0BD5-4D4D-B2B9-12B37C57AB88}.Release.Build.0 = Release|Win32
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+	EndGlobalSection
+	GlobalSection(ExtensibilityAddIns) = postSolution
+	EndGlobalSection
+EndGlobal

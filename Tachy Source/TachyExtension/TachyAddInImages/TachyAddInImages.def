@@ -1,0 +1,6 @@
+; TachyAddInImages.def : Declares the module parameters for the DLL.
+
+LIBRARY      "TachyAddInImages"
+
+EXPORTS
+    ; Explicit exports can go here
