@@ -1,0 +1,26 @@
+# -*- mode: ruby -*-
+require 'rake/csc_task'
+
+include FileUtils::Verbose
+
+task :default => "TachyRepl.exe"
+
+Rake::CscTask.debug = true
+
+csc_task "Tachy.dll" => FileList["*.cs",
+                                 "C:\\WINNT\\Microsoft.NET\\Framework\\v1.1.4322\\EnvDTE.dll",
+                                 "C:\\WINNT\\Microsoft.NET\\Framework\\v1.1.4322\\Microsoft.VisualBasic.dll",
+                                 "C:\\WINNT\\Microsoft.NET\\Framework\\v1.1.4322\\Office.dll",
+                                 "Tachy.InitTachy.ss"] do |t|
+  t.options << "/resource:Tachy.InitTachy.ss"
+end
+CLOBBER.add("Tachy.pdb")
+
+csc_task "TachyRepl.exe" => FileList["TachyRepl/*.cs",
+                                     "Tachy.dll"]
+CLOBBER.add("TachyRepl.pdb")
+
+file "Tachy.InitTachy.ss" => "InitTachy.ss" do |t|
+  cp t.prerequisites.first, t.name
+end
+CLOBBER.add("Tachy.InitTachy.ss")
