@@ -7,8 +7,7 @@ task :default => "TachyRepl.exe"
 
 Rake::CscTask.debug = true
 
-csc_task "Tachy.dll" => FileList["*.cs",
-                                 "C:\\WINNT\\Microsoft.NET\\Framework\\v1.1.4322\\EnvDTE.dll",
+csc_task "Tachy.dll" => FileList["Env.cs", "Expression.cs", "Hashlist.cs", "Primitive.cs", "Program.cs", "Util.cs",
                                  "C:\\WINNT\\Microsoft.NET\\Framework\\v1.1.4322\\Microsoft.VisualBasic.dll",
                                  "Tachy.InitTachy.ss"] do |t|
   t.options << "/resource:Tachy.InitTachy.ss"

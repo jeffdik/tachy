@@ -9,15 +9,15 @@ namespace Tachy
 	// Expressions 
 	public abstract class Expression 
 	{
-		internal Marker marker;
+// 		internal Marker marker;
 
 		abstract public object Eval(Env env);
 		
-		internal void Mark(object obj)
-		{
-			if (obj is Pair)
-				marker = ((Pair) obj).marker;
-		}
+// 		internal void Mark(object obj)
+// 		{
+// 			if (obj is Pair)
+// 				marker = ((Pair) obj).marker;
+// 		}
 
 		static public Object[] Eval_Rands(Expression[] rands, Env env)
 		{
@@ -63,22 +63,22 @@ namespace Tachy
 						foreach (object obj in pair.cdr)
 						{
 							exps[pos] = Parse(obj);
-							exps[pos].Mark(obj);
+// 							exps[pos].Mark(obj);
 							pos++;
 						}
 						Begin beginExps = new Begin(exps);
-						beginExps.Mark(pair);
+// 						beginExps.Mark(pair);
 						return beginExps;
 					case "if": 
 						Pair curr = pair.cdr;
 						Expression test_exp = Parse(curr.car);
-						test_exp.Mark(curr.car);
+// 						test_exp.Mark(curr.car);
 						curr = curr.cdr;
 						Expression true_exp = Parse(curr.car);
-						true_exp.Mark(curr.car);
+// 						true_exp.Mark(curr.car);
 						curr = curr.cdr;
 						Expression false_exp = Parse(curr.car);
-						false_exp.Mark(curr.car);
+// 						false_exp.Mark(curr.car);
 						return new If(test_exp, true_exp, false_exp);
 					case "quote":
 						return new Lit(pair.cdr.car);
@@ -89,11 +89,11 @@ namespace Tachy
 							throw new Exception("set! error -> variable must be a symbol: " + Util.Dump(pair));
 
 						Expression exp = Parse(pair.cdr.cdr.car) as Expression;
-						exp.Mark(pair.cdr.cdr.car);
+// 						exp.Mark(pair.cdr.cdr.car);
 						if (var.val.IndexOf('.') == -1)
 						{
 							Assignment assignment = new Assignment(var, exp);
-							assignment.Mark(pair);
+// 							assignment.Mark(pair);
 							return assignment;
 						}
 						else
@@ -106,7 +106,7 @@ namespace Tachy
 							rands[2] = exp;
 							
 							App app = new App(Expression.Parse(Symbol.Create("set-property")), rands);
-							app.Mark(pair);
+// 							app.Mark(pair);
 							return app;
 						}
 					}
@@ -143,10 +143,10 @@ namespace Tachy
 						if (curr.cdr == null)
 						{
 							body = Parse(curr.car);
-							if (curr.car is Pair)
-								body.Mark(curr.car);
-							else
-								body.Mark(curr);
+// 							if (curr.car is Pair)
+// 								body.Mark(curr.car);
+// 							else
+// 								body.Mark(curr);
 						}
 						else
 						{
@@ -155,7 +155,7 @@ namespace Tachy
 							foreach (object obj in curr)
 							{
 								begin[pos] = Parse(obj);
-								begin[pos].Mark(obj);
+// 								begin[pos].Mark(obj);
 								pos++;
 							}
 							body = new Begin(begin);
@@ -196,7 +196,7 @@ namespace Tachy
 								foreach (object obj in pair.cdr)
 								{
 									rands[pos] = Expression.Parse(obj);
-									rands[pos].Mark(obj);
+// 									rands[pos].Mark(obj);
 									pos++;
 								}
 							}
@@ -205,13 +205,13 @@ namespace Tachy
 							if (prim != null)
 							{
 								Primapp primapp = new Primapp(prim, rands);
-								primapp.Mark(pair);
+// 								primapp.Mark(pair);
 								return primapp;
 							}
 							else
 							{
 								App app = new App(Expression.Parse(pair.car), rands);
-								app.Mark(pair);
+// 								app.Mark(pair);
 								return app;
 							}
 						}
@@ -257,7 +257,7 @@ namespace Tachy
 		override public System.String ToString() { return "<proc: ids=[" + Util.arrayToString(ids) + "]  body=" + body + "> "; } 
 		public override object Eval(Env env)
 		{
-			DebugInfo.EvalExpression(this);
+// 			DebugInfo.EvalExpression(this);
 			// Debug.WriteLine("Eval->Proc");
 			return new Closure(ids, body, all_in_one, env);
 		}
@@ -274,7 +274,7 @@ namespace Tachy
 		{
 			// Debug.WriteLine("Eval->Prim: " + prim.ToString());
 			Object[] eval_Rands = Eval_Rands(rands, env);
-			DebugInfo.EvalExpression(this);
+// 			DebugInfo.EvalExpression(this);
 			return prim.Call(eval_Rands);
 		}
 	}
@@ -330,7 +330,7 @@ namespace Tachy
 		{
 			// Debug.WriteLine("Eval->Assign: " + id);
 			object valEval = val.Eval(env);
-			DebugInfo.EvalExpression(this);
+// 			DebugInfo.EvalExpression(this);
 			return env.Bind(id, valEval);
 		}
 	}
@@ -345,15 +345,15 @@ namespace Tachy
 		{
 			Object proc = rator.Eval(env);
 			Object[] args = Eval_Rands(rands, env);
-			DebugInfo.EvalExpression(this);
+// 			DebugInfo.EvalExpression(this);
 			// Debug.WriteLine("Eval->App: " + proc + " " + args);
 			if (proc is Closure)
 			{
-				DebugInfo.Push(proc as Closure, rator, args, marker);
+// 				DebugInfo.Push(proc as Closure, rator, args, marker);
 
 				object result = (proc as Closure).Eval(args);
 				
-				DebugInfo.Pop(marker);
+// 				DebugInfo.Pop(marker);
 				
 				return result;
 			}

@@ -124,22 +124,22 @@ namespace Tachy
 
 			if (left_paren_token.Equals(next_token))
 			{
-				if (str is DocumentReader)
-				{
-					DocumentReader documentReader = (DocumentReader) str;
-					//EditPoint startEditPoint = documentReader.editPoint.CreateEditPoint();
-					int startEditPointLine = documentReader.Line;
-					int startEditPointCol = documentReader.Col;// - 1;
-					//startEditPoint.CharLeft(1);
+// 				if (str is DocumentReader)
+// 				{
+// 					DocumentReader documentReader = (DocumentReader) str;
+// 					//EditPoint startEditPoint = documentReader.editPoint.CreateEditPoint();
+// 					int startEditPointLine = documentReader.Line;
+// 					int startEditPointCol = documentReader.Col;// - 1;
+// 					//startEditPoint.CharLeft(1);
 					
-					Pair result = read_list(null, str);
+// 					Pair result = read_list(null, str);
 					
-					if (result != null)
-						result.marker = new Marker(documentReader.document, startEditPointLine, startEditPointCol, documentReader.Line, documentReader.Col + 1, "");//startEditPoint.GetText(documentReader.editPoint));
+// // 					if (result != null)
+// // 						result.marker = new Marker(documentReader.document, startEditPointLine, startEditPointCol, documentReader.Line, documentReader.Col + 1, "");//startEditPoint.GetText(documentReader.editPoint));
 
-					return result;
-				}
-				else
+// 					return result;
+// 				}
+// 				else
 					return read_list(null, str);
 			}
 			if (start_vector_token.Equals(next_token))
@@ -184,21 +184,21 @@ namespace Tachy
 				return read_list(Pair.Cons(read_vector(str), list_so_far), str);
 			else if (left_paren_token.Equals(token)) 
 			{
-				if (str is DocumentReader)
-				{
-					DocumentReader documentReader = (DocumentReader) str;
-					//EditPoint startEditPoint = documentReader.editPoint.CreateEditPoint();
-					//startEditPoint.CharLeft(1);
-					int startEditPointLine = documentReader.Line;
-					int startEditPointCol = documentReader.Col;
+// 				if (str is DocumentReader)
+// 				{
+// 					DocumentReader documentReader = (DocumentReader) str;
+// 					//EditPoint startEditPoint = documentReader.editPoint.CreateEditPoint();
+// 					//startEditPoint.CharLeft(1);
+// 					int startEditPointLine = documentReader.Line;
+// 					int startEditPointCol = documentReader.Col;
 					
-					Pair curList = read_list(null,str);
-					if (curList != null)
-						curList.marker = new Marker(documentReader.document, startEditPointLine, startEditPointCol, documentReader.Line, documentReader.Col + 1, "");//startEditPoint.GetText(documentReader.editPoint));
+// 					Pair curList = read_list(null,str);
+// // 					if (curList != null)
+// // 						curList.marker = new Marker(documentReader.document, startEditPointLine, startEditPointCol, documentReader.Line, documentReader.Col + 1, "");//startEditPoint.GetText(documentReader.editPoint));
 					
-					return read_list(Pair.Cons(curList, list_so_far), str);
-				}
-				else
+// 					return read_list(Pair.Cons(curList, list_so_far), str);
+// 				}
+// 				else
 					return read_list(Pair.Cons(read_list(null,str), list_so_far),str);
 			}
 			else if (IsMember(list_so_far, token))
@@ -471,7 +471,7 @@ namespace Tachy
 			else 
 				eval_Env = env; // tailcall
 
-			DebugInfo.SetEnvironment(eval_Env);
+// 			DebugInfo.SetEnvironment(eval_Env);
 			return body.Eval(eval_Env); 
 		}
 	}
@@ -481,7 +481,7 @@ namespace Tachy
 	public class Pair : ICollection
 	{  
 		private object car_; private Pair cdr_; 
-		public Marker marker;
+// 		public Marker marker;
 		public bool hasMember = false;
 		public string member = "";
 		

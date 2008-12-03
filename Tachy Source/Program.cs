@@ -70,13 +70,13 @@ namespace Tachy
 			{
 				if (macros.Count > 0)
 				{
-					bool curRunHidden = DebugInfo.RunHidden;
-					DebugInfo.RunHidden = true; //don't debug the macro expension code
+// 					bool curRunHidden = DebugInfo.RunHidden;
+// 					DebugInfo.RunHidden = true; //don't debug the macro expension code
 
 					Closure macroExpand = initEnv.Apply(Symbol.Create("macro-expand")) as Closure;
 					parsedObj = macroExpand.Eval(new Object[] { parsedObj });
 
-					DebugInfo.RunHidden = curRunHidden;
+// 					DebugInfo.RunHidden = curRunHidden;
 				} 
 				
 				Pair p = parsedObj as Pair;
@@ -102,7 +102,7 @@ namespace Tachy
 						//initEnv = new Extended_Env(new Pair(def), new Pair(null), initEnv);
 						//Object value = Eval(expr);
 						//Console.WriteLine("defining: " + def);
-						expr.Mark(p);
+// 						expr.Mark(p);
 						initEnv.Bind(def, Eval(expr));					
 						break;
 					case "macro":
