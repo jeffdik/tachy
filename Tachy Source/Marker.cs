@@ -5,8 +5,6 @@ using System.Windows.Forms.Design;
 using EnvDTE;
 using System.Threading;
 using System.IO;
-using Microsoft.Office.Core;
-
 
 namespace Tachy
 {
@@ -58,7 +56,6 @@ namespace Tachy
 		public static ArrayList procIndexOfItemInCallStack;
 		public static Hashtable hiddenBindings ;
 
-		public static CommandBar tachyBar;
 		public static OutputWindowPane tachyOutputWindowPane;
 		public static PropertyGrid propertyGrid = null;
 		public static ListView callstackListView = null;
@@ -200,12 +197,12 @@ namespace Tachy
 			try 
 			{
 				//if ((tachyBar != null) && (tachyBar.Controls != null))
-				{
-					foreach (CommandBarControl commandBarControl in tachyBar.Controls)
-						commandBarControl.Enabled = GetEnabledStatus(commandBarControl.Tag);
+// 				{
+// 					foreach (CommandBarControl commandBarControl in tachyBar.Controls)
+// 						commandBarControl.Enabled = GetEnabledStatus(commandBarControl.Tag);
 
-					Application.DoEvents();
-				}
+// 					Application.DoEvents();
+// 				}
 			}
 			catch(System.Exception e)
 			{

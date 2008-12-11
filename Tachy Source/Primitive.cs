@@ -380,7 +380,7 @@ namespace Tachy
 			{
 				if ((args[0] is Pair) && (args[1] is Pair))
 				{
-					((Pair) args[1]).marker = ((Pair) args[0]).marker;
+// 					((Pair) args[1]).marker = ((Pair) args[0]).marker;
 					((Pair) args[1]).hasMember = ((Pair) args[0]).hasMember;
 					((Pair) args[1]).member = ((Pair) args[0]).member;
 				}
