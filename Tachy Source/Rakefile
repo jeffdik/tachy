@@ -6,17 +6,33 @@ include FileUtils::Verbose
 task :default => "TachyRepl.exe"
 
 Rake::CscTask.debug = true
+RakeFileUtils.verbose_flag = true
 
+file "Microsoft.VisualBasic.dll"
+file "System.Windows.Forms.dll"
+
+debug_ext = (RUBY_PLATFORM == "i386_mswin32") ? "pdb" : "mdb"
+              
+visual_basic_dll = if RUBY_PLATFORM != "i386_mswin32"
+                     "Microsoft.VisualBasic.dll"
+                   else
+                     "C:\\WINNT\\Microsoft.NET\\Framework\\v1.1.4322\\Microsoft.VisualBasic.dll"
+                   end
 csc_task "Tachy.dll" => FileList["Env.cs", "Expression.cs", "Hashlist.cs", "Primitive.cs", "Program.cs", "Util.cs",
-                                 "C:\\WINNT\\Microsoft.NET\\Framework\\v1.1.4322\\Microsoft.VisualBasic.dll",
-                                 "Tachy.InitTachy.ss"] do |t|
+                                 "System.Windows.Forms.dll",
+                                 visual_basic_dll, "Tachy.InitTachy.ss"] do |t|
   t.options << "/resource:Tachy.InitTachy.ss"
 end
-CLOBBER.add("Tachy.pdb")
+CLOBBER.add("Tachy.#{debug_ext}")
+
+file "System.Drawing.dll"
 
 csc_task "TachyRepl.exe" => FileList["TachyRepl/*.cs",
-                                     "Tachy.dll"]
-CLOBBER.add("TachyRepl.pdb")
+                                     "Tachy.dll",
+                                     "System.Drawing.dll",
+                                     "System.Windows.Forms.dll"]
+
+CLOBBER.add("TachyRepl.#{debug_ext}")
 
 file "Tachy.InitTachy.ss" => "InitTachy.ss" do |t|
   cp t.prerequisites.first, t.name
