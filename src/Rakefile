@@ -11,7 +11,7 @@ RakeFileUtils.verbose_flag = true
 file "Microsoft.VisualBasic.dll"
 file "System.Windows.Forms.dll"
 
-debug_ext = (RUBY_PLATFORM == "i386_mswin32") ? "pdb" : "mdb"
+debug_ext = (RUBY_PLATFORM == "i386_mswin32") ? "pdb" : "*.mdb"
               
 visual_basic_dll = if RUBY_PLATFORM != "i386_mswin32"
                      "Microsoft.VisualBasic.dll"
