@@ -1,0 +1,6 @@
+(using "System.Windows.Forms")
+(define first-form (Form.))
+(.Text$ first-form "My First Form")
+(.Width$ first-form 200)
+(.Height$ first-form 100)
+(System.Windows.Forms.Application.Run first-form)

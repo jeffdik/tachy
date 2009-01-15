@@ -1,0 +1,6 @@
+(using "System.Windows.Forms")
+(define first-form (new 'Form))
+(set-property first-form 'Text "My First Form")
+(set-property first-form 'Width 200)
+(set-property first-form 'Height 100)
+(call-static 'System.Windows.Forms.Application 'Run first-form)

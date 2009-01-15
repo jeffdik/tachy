@@ -1,0 +1,1 @@
+(System.Console.WriteLine "Hello, {0}" "World")
