@@ -30,8 +30,7 @@ namespace Tachy
 				while (true)
 				{
 					Application.DoEvents();
-					StreamWriter str = new StreamWriter("..\\..\\transcript.ss",true);
-					// StreamWriter str = new StreamWriter("transcript.ss", true);
+					StreamWriter str = new StreamWriter("transcript.ss", true);
 					try 
 					{
 						Console.WriteLine("(" + (end - start) + " ms)");
