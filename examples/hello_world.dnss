@@ -1,1 +1,2 @@
-(System.Console.WriteLine "Hello, {0}" "World")
+(define hw (System.String.Format "Hello, {0}" "World"))
+(display hw)
