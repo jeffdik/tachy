@@ -1,5 +1,6 @@
 using System;
 using System.Diagnostics;
+using System.Text.RegularExpressions;
 using System.Threading;
 using System.Windows.Forms;
 using System.IO;
@@ -201,6 +202,7 @@ namespace Tachy
 								}
 							}
 						
+                                                        Console.WriteLine(pair.car.ToString());
 							IPrim prim = Primitives.getPrim(pair.car.ToString());
 							if (prim != null)
 							{
@@ -208,6 +210,22 @@ namespace Tachy
 // 								primapp.Mark(pair);
 								return primapp;
 							}
+                                                        else if (Regex.IsMatch(pair.car.ToString(), @"^([\w.]+)\.$"))
+                                                        {
+                                                            Match m = Regex.Match(pair.car.ToString(), @"^([\w.]+)\.$");
+                                                            string class_name = m.Result("$1");
+                                                            Console.WriteLine("ClassName: {0}", class_name);
+                                                            if (rands == null)
+                                                                rands = new Expression[0];
+                                                            Expression[] new_rands = new Expression[rands.Length+1];
+                                                            new_rands[0] = Expression.Parse(Pair.Cons(Symbol.Create("quote"), new Pair(class_name)));
+                                                            Console.WriteLine(Util.Dump(new_rands[0]));
+                                                            rands.CopyTo(new_rands, 1);
+                                                            App app = new App(Expression.Parse(Symbol.Create("new")), new_rands);
+                                                            Console.WriteLine(Util.Dump(app));
+                                                            return app;
+                                                                                            
+                                                        }
 							else
 							{
 								App app = new App(Expression.Parse(pair.car), rands);
