@@ -14,7 +14,10 @@ module Dndn
       when /^([\w\.]+)\.$/
         [:new, [:quote, $1.to_sym]]
       when /^\.(\w+)\$$/
-        if sexp.length == 3
+        case sexp.length
+        when 2
+          [:"get-property", sexp[1], [:quote, $1.to_sym]]
+        when 3
           [:"set-property", sexp[1], [:quote, $1.to_sym], sexp[2]]
         end
       when /\w\.\w+$/
