@@ -1,0 +1,4 @@
+(using "System.Windows.Forms")
+(define first-form (Form.))
+(.Text$ first-form "My First Form")
+(display (.Text$ first-form))
