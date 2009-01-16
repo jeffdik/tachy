@@ -231,7 +231,15 @@ namespace Tachy
 							    Match m = Regex.Match(pair.car.ToString(), @"^\.(\w+)\$$");
 							    string property_name = m.Result("$1");
 							    Console.WriteLine(Util.Dump(pair));
-							    if (rands.Length == 2) {
+							    if (rands.Length == 1) {
+							      Expression[] new_rands = new Expression[rands.Length+1];
+							      new_rands[0] = rands[0];
+							      new_rands[1] = Expression.Parse(Pair.Cons(Symbol.Create("quote"), new Pair(property_name)));
+							      Console.WriteLine(Util.Dump(new_rands[1]));
+							      App app = new App(Expression.Parse(Symbol.Create("get-property")), new_rands);
+							      Console.WriteLine(Util.Dump(app));
+							      return app;
+							    } else if (rands.Length == 2) {
 							      Expression[] new_rands = new Expression[rands.Length+1];
 							      new_rands[0] = rands[0];
 							      new_rands[1] = Expression.Parse(Pair.Cons(Symbol.Create("quote"), new Pair(property_name)));
