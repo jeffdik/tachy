@@ -19,7 +19,6 @@ visual_basic_dll = if RUBY_PLATFORM != "i386_mswin32"
                      "C:\\WINNT\\Microsoft.NET\\Framework\\v1.1.4322\\Microsoft.VisualBasic.dll"
                    end
 csc_task "Tachy.dll" => FileList["Env.cs", "Expression.cs", "Hashlist.cs", "Primitive.cs", "Program.cs", "Util.cs",
-                                 "System.Windows.Forms.dll",
                                  visual_basic_dll, "Tachy.InitTachy.ss"] do |t|
   t.options << "/resource:Tachy.InitTachy.ss"
 end
@@ -27,10 +26,8 @@ CLOBBER.add("Tachy.#{debug_ext}")
 
 file "System.Drawing.dll"
 
-csc_task "TachyRepl.exe" => FileList["TachyRepl/*.cs",
-                                     "Tachy.dll",
-                                     "System.Drawing.dll",
-                                     "System.Windows.Forms.dll"]
+csc_task "TachyRepl.exe" => FileList["TachyRepl/TachyRepl.cs",
+                                     "Tachy.dll"]
 
 CLOBBER.add("TachyRepl.#{debug_ext}")
 
