@@ -1,6 +1,5 @@
 using System;
 using System.IO;
-using System.Windows.Forms;
 
 namespace Tachy
 {
@@ -29,7 +28,7 @@ namespace Tachy
 			{
 				while (true)
 				{
-					Application.DoEvents();
+					// Application.DoEvents();
 					StreamWriter str = new StreamWriter("transcript.ss", true);
 					try 
 					{
