@@ -327,7 +327,7 @@ namespace Tachy
 			public object Call(Object[] args)
 			{
 				Object obj = args[0];
-				String field = (args[1] as Symbol).ToString();
+				String field = args[1].ToString();
 				System.Object[] rest = null;
 				if (args[2] != null)
 					rest = (args[2] as Pair).ToArray();
