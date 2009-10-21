@@ -225,36 +225,6 @@ namespace Tachy
                                                             return app;
                                                                                             
                                                         }
-							else if (Regex.IsMatch(pair.car.ToString(), @"^\.(\w+)\$$"))
-							{
-							    Match m = Regex.Match(pair.car.ToString(), @"^\.(\w+)\$$");
-							    string property_name = m.Result("$1");
-							    Console.WriteLine(Util.Dump(pair));
-							    if (rands.Length == 2) {
-							      Expression[] new_rands = new Expression[rands.Length+1];
-							      new_rands[0] = rands[0];
-							      new_rands[1] = Expression.Parse(Pair.Cons(Symbol.Create("quote"), new Pair(property_name)));
-							      new_rands[2] = rands[1];
-							      App app = new App(Expression.Parse(Symbol.Create("set-property")), new_rands);
-							      Console.WriteLine(Util.Dump(app));
-							      return app;
-							    } else {
-							      return null;
-							    }
-							}
-							else if (Regex.IsMatch(pair.car.ToString(), @"^(.*)\.([^.]+)$"))
-							{
-							    Match m = Regex.Match(pair.car.ToString(), @"^(.*)\.([^.]+)$");
-							    string class_name = m.Result("$1");
-							    string static_method = m.Result("$2");
-							    Expression[] new_rands = new Expression[rands.Length+2];
-							    new_rands[0] = Expression.Parse(Pair.Cons(Symbol.Create("quote"), new Pair(class_name)));
-							    new_rands[1] = Expression.Parse(Pair.Cons(Symbol.Create("quote"), new Pair(static_method)));
-							    rands.CopyTo(new_rands, 2);
-							    App app = new App(Expression.Parse(Symbol.Create("call-static")), new_rands);
-							    Console.WriteLine(Util.Dump(app));
-							    return app;
-							}
 							else
 							{
 								App app = new App(Expression.Parse(pair.car), rands);
