@@ -35,7 +35,7 @@ namespace Tachy
 						Console.WriteLine("(" + (end - start) + " ms)");
 						Console.Write("> ");
 					
-						String val = Console.ReadLine();
+						String val = ReadAvailable();
 
 						str.WriteLine(val);
 
@@ -54,6 +54,26 @@ namespace Tachy
 				}
 			}
 		}
+
+                static string ReadAvailable()
+                {
+                    StringWriter writer = new StringWriter();
+                    char[] buffer = new char[1024];
+                    int chars_read = buffer.Length;
+
+                    writer.Write((char) Console.In.Read());
+
+                    while ((chars_read == buffer.Length) ||
+                           (Console.In.Peek() != -1))
+                    {
+                        chars_read = Console.In.Read(buffer, 0, buffer.Length);
+                        writer.Write(buffer, 0, chars_read);
+                        if (chars_read != buffer.Length)
+                            break;
+                    }
+
+                    return writer.ToString().TrimEnd();
+                }
 
 		static void Main(string[] args)
 		{
